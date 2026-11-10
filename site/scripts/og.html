@@ -1,0 +1,55 @@
+<!doctype html>
+<!-- Template for public/og/eleicoes.png (1200x630). Rendered by scripts/og.py with Playwright.
+     The histogram is the real seed study from model.json (500 runs of the original code). -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: Geist; src: url(../node_modules/@fontsource-variable/geist/files/geist-latin-wght-normal.woff2) format("woff2"); font-weight: 100 900; }
+  @font-face { font-family: GeistMono; src: url(../node_modules/@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2) format("woff2"); font-weight: 100 900; }
+  * { margin: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; color: #17150f; font-family: Geist, sans-serif; position: relative;
+    background: radial-gradient(700px 500px at 104% 0%, rgb(180 38 31 / .10), transparent 64%), #f3f0e8; }
+  .dots { position: absolute; inset: 0; background-image: radial-gradient(circle, rgb(60 50 30 / .10) 1.2px, transparent 1.2px); background-size: 24px 24px; }
+  .wrap { position: absolute; inset: 0; padding: 58px 72px; display: flex; flex-direction: column; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 16px; font-size: 34px; font-weight: 600; letter-spacing: -0.03em; }
+  .brand span { font-weight: 300; color: #4d483d; }
+  .eyebrow { font-family: GeistMono, monospace; font-size: 16px; letter-spacing: .16em; text-transform: uppercase; color: #4d483d; display: flex; align-items: center; gap: 12px; }
+  .eyebrow::before { content: ""; width: 9px; height: 9px; border-radius: 9px; background: #b4261f; }
+  h1 { font-size: 66px; font-weight: 300; letter-spacing: -0.045em; line-height: 1.04; margin-top: 18px; }
+  h1 b { font-weight: 400; color: #b4261f; }
+  .stamp { position: absolute; right: 96px; top: 70px; transform: rotate(-7deg); border: 4px double #b4261f; border-radius: 10px; color: #b4261f;
+           padding: 10px 18px; font-family: GeistMono, monospace; font-weight: 700; font-size: 26px; letter-spacing: .16em; text-transform: uppercase; }
+  .card { position: absolute; right: 72px; bottom: 120px; width: 400px; padding: 24px 26px; border-radius: 18px; background: #fbf9f4;
+          border: 1px solid #ddd6c6; box-shadow: 0 0 0 7px #ece8dd, 0 0 0 8px #c8bfab; }
+  .lbl { font-family: GeistMono, monospace; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: #4d483d; }
+  .hist { display: flex; align-items: flex-end; gap: 3px; height: 130px; margin-top: 16px; border-bottom: 1px solid #c8bfab; }
+  .hist i { flex: 1; background: #4d483d; opacity: .55; border-radius: 4px 4px 0 0; }
+  .hist i.me { background: #b4261f; opacity: 1; }
+  .cap { margin-top: 12px; font-size: 16px; color: #4d483d; }
+  .foot { font-family: GeistMono, monospace; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: #6b6557; }
+</style>
+</head>
+<body>
+  <div class="dots"></div>
+  <div class="stamp">Dados fictícios</div>
+  <div class="card">
+    <p class="lbl">Acurácia de teste · 500 sorteios</p>
+    <div class="hist">
+      <i style="height:7%"></i><i style="height:28%"></i><i style="height:33%"></i><i class="me" style="height:62%"></i><i style="height:88%"></i><i style="height:100%"></i><i style="height:94%"></i><i style="height:58%"></i><i style="height:53%"></i><i style="height:33%"></i><i style="height:15%"></i><i style="height:7%"></i><i style="height:2%"></i><i style="height:2%"></i><i style="height:2%"></i>
+    </div>
+    <p class="cap">Média 24,4%: o mesmo que chutar 1 em 4.</p>
+  </div>
+  <div class="wrap">
+    <div class="brand">
+      <svg width="52" height="52" viewBox="0 0 32 32"><rect x="1" y="1" width="30" height="30" rx="8.5" fill="#b4261f"/><rect x="8" y="6.5" width="16" height="19" rx="2" fill="#fbf9f4" transform="rotate(-6 16 16)"/><path d="M11.5 16.8l3.2 3.2 6.2-7.4" fill="none" stroke="#b4261f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>Eleições SP <span>2024</span></div>
+    </div>
+    <div>
+      <p class="eyebrow">Regressão logística multinomial</p>
+      <h1>O que um modelo<br>aprende quando os<br>dados <b>são sorteados?</b></h1>
+    </div>
+    <p class="foot">Não é previsão eleitoral · Projeto de portfólio de Gustavo Martins Gripaldi</p>
+  </div>
+</body>
+</html>

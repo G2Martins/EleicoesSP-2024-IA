@@ -1,0 +1,781 @@
+<a href="#simulador" class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-ink">Pular para o simulador</a>
+
+<!-- Portfolio disclaimer + honesty banner: always visible, first things a visitor reads. -->
+<div class="border-b border-line bg-well text-[12px] leading-snug text-ink-2">
+  <p class="wrap py-2 text-center">
+    Projeto de portfólio de {{ links.author }}.
+    <a [href]="links.project" class="ml-1 whitespace-nowrap text-accent underline underline-offset-2">Ver no portfólio</a>
+  </p>
+</div>
+<div class="border-b border-accent/40 bg-accent text-accent-ink" role="note">
+  <p class="wrap py-2.5 text-center text-[13.5px] font-medium">Modelo educacional treinado com dados fictícios; não é previsão eleitoral.</p>
+</div>
+
+<header class="sticky top-0 z-40 border-b border-line bg-bg/95">
+  <div class="wrap flex h-14 items-center gap-6">
+    <a href="#visao-geral" class="flex items-center gap-2.5" aria-label="Eleições SP 2024 fictício, visão geral">
+      <img src="favicon.svg" width="26" height="26" alt="">
+      <span class="text-[16px] font-semibold tracking-[-0.03em]">Eleições SP <span class="font-light text-ink-2">2024</span> <span class="mono ml-1 rounded border border-accent/60 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-[.12em] text-accent">fictício</span></span>
+    </a>
+    <nav class="ml-auto hidden items-center gap-6 md:flex" aria-label="Seções">
+      <a href="#visao-geral" class="navlink">Visão geral</a>
+      <a href="#dashboard" class="navlink">Dashboard</a>
+      <a href="#modelo" class="navlink">Modelo</a>
+      <a href="#simulador" class="navlink">Simulador</a>
+      <a href="#dados" class="navlink">Dados</a>
+    </nav>
+    <a [href]="links.repo" class="btn btn-line ml-auto !min-h-9 !px-3 text-[13px] md:ml-0">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3"/></svg>
+      GitHub
+    </a>
+  </div>
+  <nav class="flex justify-between gap-3 overflow-x-auto border-t border-line px-4 py-2.5 md:hidden" aria-label="Seções (mobile)">
+    <a href="#visao-geral" class="navlink">Visão geral</a>
+    <a href="#dashboard" class="navlink">Dashboard</a>
+    <a href="#modelo" class="navlink">Modelo</a>
+    <a href="#simulador" class="navlink">Simulador</a>
+    <a href="#dados" class="navlink">Dados</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ============ VISÃO GERAL ============ -->
+  <section id="visao-geral" class="scroll-mt-28" aria-labelledby="h1">
+    <div class="wrap grid gap-12 pb-14 pt-14 lg:grid-cols-[1.2fr_1fr] lg:items-end lg:pt-20">
+      <div>
+        <p class="eyebrow">Regressão logística multinomial · dados fictícios</p>
+        <h1 id="h1" class="h-display mt-5 text-[38px] sm:text-[54px] lg:text-[60px]">
+          <span class="mask"><span class="rise">O que um modelo aprende</span></span>
+          <span class="mask"><span class="rise text-ink-2" style="animation-delay: 90ms">quando os dados</span></span>
+          <span class="mask"><span class="rise text-accent" style="animation-delay: 180ms">são sorteados?</span></span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-[16px] leading-relaxed text-ink-2">
+          Trabalho de IA da faculdade sobre a eleição para prefeito de São Paulo em 2024, refeito como app de dados. Os
+          eleitores, os votos e os candidatos foram gerados com <code class="mono text-[14px]">np.random</code>: nenhuma
+          linha vem de pesquisa ou do TSE. A lição é justamente essa: sem sinal nos dados, o modelo acerta como um chute.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a href="#simulador" class="btn btn-primary">Testar o simulador</a>
+          <a href="#dashboard" class="btn btn-line">Explorar os dados</a>
+          <span class="stamp ml-2 text-[13px]">Dados fictícios</span>
+        </div>
+      </div>
+
+      <figure class="card ticks p-6" aria-labelledby="hero-cap">
+        <p class="eyebrow">Acurácia de teste em {{ m.seedStudy.runs }} sorteios</p>
+        <figcaption id="hero-cap" class="mt-3 text-[15px] leading-snug">
+          Rodando o código original com {{ m.seedStudy.runs }} sementes diferentes, a acurácia gira em torno dos 25% do acaso.
+        </figcaption>
+        <div class="mt-6 flex h-36 items-end gap-[2px] border-b border-line-2" role="img" [attr.aria-label]="'Histograma: média ' + pct(m.seedStudy.mean) + ', 90% dos sorteios entre ' + pct(m.seedStudy.p5) + ' e ' + pct(m.seedStudy.p95)">
+          @for (h of seeds; track h.acc) {
+            <span class="tip relative flex h-full flex-1 flex-col justify-end" [attr.title]="pct(h.acc) + ': ' + h.n + ' sorteios'">
+              @if (h.mine) { <span class="mono absolute -top-0.5 left-1/2 -translate-x-1/2 text-[10px] text-accent">42</span> }
+              <span class="block rounded-t-[4px]" [style.height.%]="h.scale * 86" [style.background]="h.mine ? 'var(--accent)' : 'var(--ink-2)'" [style.opacity]="h.mine ? 1 : 0.55"></span>
+            </span>
+          }
+        </div>
+        <div class="mono mt-1 flex justify-between text-[10.5px] text-dim" aria-hidden="true"><span>{{ pct(m.seedStudy.min, 0) }}</span><span>acurácia de teste</span><span>{{ pct(m.seedStudy.max, 0) }}</span></div>
+        <p class="mt-5 border-t border-line pt-4 text-[13px] leading-relaxed text-ink-2">
+          Média <strong class="text-ink">{{ pct(m.seedStudy.mean) }}</strong>; 90% dos sorteios entre {{ pct(m.seedStudy.p5) }} e
+          {{ pct(m.seedStudy.p95) }}. A semente fixa usada aqui (42) deu <strong class="text-accent">{{ pct(m.metrics.test.accuracy) }}</strong>;
+          o README original citava 30%. Os dois são ruído.
+        </p>
+      </figure>
+    </div>
+
+    <div class="wrap pb-16">
+      <div class="grid gap-5 md:grid-cols-3">
+        <article class="panel p-5">
+          <h2 class="text-[16px] font-medium">O problema (do enunciado)</h2>
+          <p class="mt-2 text-[14px] leading-relaxed text-ink-2">
+            Um jornal pede uma previsão rápida de voto para prefeito de São Paulo. Com idade, renda, escolaridade, região e
+            gênero, o modelo estima em qual de quatro candidatos inventados (Monarki, Bolos, Dantena e Marcos) cada eleitor votaria.
+          </p>
+        </article>
+        <article class="panel p-5">
+          <h2 class="text-[16px] font-medium">A origem</h2>
+          <p class="mt-2 text-[14px] leading-relaxed text-ink-2">
+            Trabalho em grupo da disciplina de Inteligência Artificial da faculdade: regressão logística multinomial em
+            Python com pandas e scikit-learn. O código original está intacto no repositório.
+          </p>
+          <p class="mt-3 text-[13px] text-dim">Equipe: {{ credits.join(', ') }}.</p>
+        </article>
+        <article class="panel p-5">
+          <h2 class="text-[16px] font-medium">Por que virou app</h2>
+          <p class="mt-2 text-[14px] leading-relaxed text-ink-2">
+            Como peça de portfólio, o valor está em tratar o resultado com honestidade: mostrar que o modelo não aprende
+            nada porque não há nada para aprender, e como cada métrica denuncia isso.
+          </p>
+        </article>
+      </div>
+
+      <aside class="mt-8 rounded-[14px] border-2 border-dashed border-line-2 p-5 sm:p-6" aria-labelledby="real-title">
+        <p class="eyebrow">Contexto real, à parte</p>
+        <h2 id="real-title" class="mt-2 text-[17px] font-medium">Resultado oficial do 2º turno em São Paulo, 27/10/2024</h2>
+        <p class="mt-2 max-w-3xl text-[14px] leading-relaxed text-ink-2">
+          Ricardo Nunes (MDB) foi reeleito com 59,35% dos votos válidos (3.393.110 votos), contra 40,65% de Guilherme
+          Boulos (PSOL), com 2.323.901 votos. Fonte: <a [href]="links.tse" class="text-accent underline underline-offset-2">Tribunal Superior Eleitoral</a>.
+          Este dado não foi usado pelo modelo: os eleitores e os candidatos deste projeto são inventados e não representam
+          pessoas reais.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ DASHBOARD ============ -->
+  <section id="dashboard" class="scroll-mt-28 border-t border-line py-16" aria-labelledby="dash-title">
+    @defer (hydrate on viewport) {
+    <div class="wrap">
+      <p class="eyebrow">Dashboard · análise exploratória</p>
+      <h2 id="dash-title" class="h2 mt-3 text-[32px] sm:text-[40px]">{{ e.kpis.rows }} eleitores fictícios, gerados com semente {{ e.kpis.seed }}</h2>
+      <p class="mt-3 max-w-3xl text-ink-2">
+        Cada coluna é um sorteio independente: idade inteira de 18 a 69, renda uniforme de R$ 1 mil a R$ 10 mil,
+        códigos de escolaridade, região e gênero, e o voto sorteado entre os quatro nomes. Como o voto não depende de
+        nada, qualquer padrão abaixo é coincidência de amostra pequena. Tudo foi calculado no Python, na exportação.
+      </p>
+
+      <dl class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+        @for (k of [
+          { l: 'Linhas', v: int(e.kpis.rows) },
+          { l: 'Colunas', v: int(e.kpis.columns) },
+          { l: 'Valores ausentes', v: int(e.kpis.missing) },
+          { l: 'Linhas duplicadas', v: int(e.kpis.duplicates) },
+          { l: 'Semente', v: e.kpis.seed },
+          { l: 'Candidatos fictícios', v: classes.length }
+        ]; track k.l) {
+          <div class="panel px-4 py-3"><dt class="text-[12px] text-ink-2">{{ k.l }}</dt><dd class="num mt-1 text-[24px] font-light tracking-[-0.02em]">{{ k.v }}</dd></div>
+        }
+      </dl>
+
+      <div class="mt-8 grid gap-6 lg:grid-cols-[1fr_1.4fr]">
+        <figure class="card p-5 sm:p-6" data-reveal>
+          <figcaption>
+            <span class="block text-[15px] font-medium">Votos sorteados por candidato</span>
+            <span class="block text-[13px] text-ink-2">Classe-alvo. Com sorteio uniforme o esperado seria 25 cada.</span>
+          </figcaption>
+          <ul class="mt-5 space-y-3">
+            @for (v of votes; track v.k) {
+              <li class="tip grid grid-cols-[76px_1fr_64px] items-center gap-3 text-[13px]" [attr.title]="v.name + ': ' + v.n + ' votos'">
+                <span class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-sm" [style.background]="color[v.k]"></span>{{ v.name }}</span>
+                <span class="relative h-3.5"><span class="bar absolute inset-y-0 left-0 w-full" [style.background]="color[v.k]" [style.transform]="'scaleX(' + v.scale + ')'"></span></span>
+                <span class="num text-right">{{ v.n }}<span class="text-ink-2"> · {{ pct(v.n / e.kpis.rows, 0) }}</span></span>
+              </li>
+            }
+          </ul>
+        </figure>
+
+        <div class="grid gap-6 sm:grid-cols-2">
+          @for (h of hists; track h.f) {
+            <figure class="card p-5 sm:p-6" data-reveal>
+              <figcaption>
+                <span class="block text-[15px] font-medium">Distribuição: {{ h.f }}</span>
+                <span class="block text-[13px] text-ink-2">{{ h.f === 'Idade' ? 'Faixas de 5 anos.' : 'Faixas de R$ 1 mil.' }} Média {{ dec(e.describe[h.f].mean, 1) }}.</span>
+              </figcaption>
+              <div class="mt-5 flex h-32 items-end gap-[2px] border-b border-line-2">
+                @for (b of h.bins; track b.from) {
+                  <span class="tip flex h-full flex-1 flex-col justify-end" [attr.title]="dec(b.from, 0) + ' a ' + dec(b.to, 0) + ': ' + b.n + ' eleitores'">
+                    <span class="num mono mb-0.5 text-center text-[10px] text-ink-2">{{ b.n }}</span>
+                    <span class="block rounded-t-[4px] bg-ink-2/55" [style.height.%]="b.scale * 80"></span>
+                  </span>
+                }
+              </div>
+              <div class="mono mt-1 flex justify-between text-[10.5px] text-dim" aria-hidden="true"><span>{{ dec(h.bins[0].from, 0) }}</span><span>{{ h.f === 'Idade' ? 'anos' : 'mil R$' }}</span><span>{{ dec(h.bins[h.bins.length - 1].to, 0) }}</span></div>
+            </figure>
+          }
+        </div>
+      </div>
+
+      <figure class="card mt-6 p-5 sm:p-6" data-reveal>
+        <figcaption>
+          <span class="block text-[15px] font-medium">Variáveis codificadas</span>
+          <span class="block text-[13px] text-ink-2">Contagem por código. O modelo original usa os códigos como números (Norte=1 … Centro=5).</span>
+        </figcaption>
+        <div class="mt-5 grid gap-8 md:grid-cols-3">
+          @for (c of counts; track c.f) {
+            <div>
+              <p class="mono text-[11px] uppercase tracking-[.12em] text-ink-2">{{ c.f }}</p>
+              <ul class="mt-2 space-y-2">
+                @for (i of c.items; track i.label) {
+                  <li class="tip grid grid-cols-[100px_1fr_28px] items-center gap-2 text-[13px]" [attr.title]="i.label + ': ' + i.n">
+                    <span class="truncate">{{ i.label }}</span>
+                    <span class="relative h-3"><span class="bar absolute inset-y-0 left-0 w-full !h-3 bg-ink-2/55" [style.transform]="'scaleX(' + i.scale + ')'"></span></span>
+                    <span class="num text-right">{{ i.n }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+      </figure>
+
+      <!-- Vote share by segment -->
+      <figure class="card mt-6 p-5 sm:p-6" data-reveal>
+        <figcaption>
+          <span class="block text-[15px] font-medium">Voto por segmento</span>
+          <span class="block text-[13px] text-ink-2">Barras de 100%. Diferenças entre segmentos são flutuação de 20 eleitores por grupo, não preferência.</span>
+        </figcaption>
+        <div class="mt-3 flex flex-wrap gap-4 text-[12px] text-ink-2">
+          @for (c of classes; track c; let k = $index) { <span class="flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm" [style.background]="color[k]"></span>{{ c }}</span> }
+        </div>
+        <div class="mt-5 grid gap-x-10 gap-y-7 md:grid-cols-2 lg:grid-cols-3">
+          @for (s of segments; track s.key) {
+            <div>
+              <p class="mono text-[11px] uppercase tracking-[.12em] text-ink-2">{{ s.key }}</p>
+              <ul class="mt-2 space-y-2">
+                @for (g of s.groups; track g.label) {
+                  <li class="grid grid-cols-[100px_1fr] items-center gap-2 text-[12.5px]">
+                    <span class="truncate">{{ g.label }} <span class="text-dim">· {{ g.n }}</span></span>
+                    <span class="flex h-5 gap-[2px]">
+                      @for (p of g.parts; track p.k) {
+                        @if (p.c) {
+                          <span class="tip num flex items-center justify-center overflow-hidden text-[10.5px] font-medium first:rounded-l-[4px] last:rounded-r-[4px]"
+                                [style.flex-grow]="p.c" [style.background]="color[p.k]" [style.color]="onColor[p.k]"
+                                [attr.title]="g.label + ' · ' + classes[p.k] + ': ' + p.c + ' de ' + g.n + ' (' + pct(p.share, 0) + ')'">{{ p.share >= 0.18 ? pct(p.share, 0) : '' }}</span>
+                        }
+                      }
+                    </span>
+                  </li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+      </figure>
+
+      <div class="mt-6 grid gap-6 lg:grid-cols-2">
+        <figure class="card p-5 sm:p-6" data-reveal>
+          <figcaption>
+            <span class="block text-[15px] font-medium">Correlação entre as variáveis</span>
+            <span class="block text-[13px] text-ink-2">Pearson. Sorteios independentes: tudo perto de zero, como esperado.</span>
+          </figcaption>
+          <div class="mt-5 overflow-x-auto">
+            <table class="num w-full min-w-[400px] border-separate border-spacing-[2px] text-[12px]">
+              <thead><tr><th class="w-24"></th>@for (l of e.corr.labels; track l) { <th class="px-1 pb-1 text-center font-normal text-ink-2">{{ l }}</th> }</tr></thead>
+              <tbody>
+                @for (row of e.corr.matrix; track $index; let i = $index) {
+                  <tr>
+                    <th class="pr-2 text-left font-normal text-ink-2">{{ e.corr.labels[i] }}</th>
+                    @for (v of row; track $index; let j = $index) {
+                      <td class="tip h-10 rounded-[4px] text-center" [style.background]="i === j ? 'var(--well)' : div(v, 0.4)"
+                          [attr.title]="e.corr.labels[i] + ' × ' + e.corr.labels[j] + ': ' + dec(v, 3)">{{ i === j ? '1' : dec(v) }}</td>
+                    }
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+          <div class="mono mt-3 flex items-center gap-2 text-[11px] text-dim" aria-hidden="true">
+            <span>−0,4</span><span class="h-2 flex-1 rounded-sm" style="background: linear-gradient(90deg, var(--neg), var(--mid), var(--pos))"></span><span>+0,4</span>
+          </div>
+        </figure>
+
+        <figure class="card p-5 sm:p-6" data-reveal>
+          <figcaption>
+            <span class="block text-[15px] font-medium">Importância das variáveis</span>
+            <span class="block text-[13px] text-ink-2">
+              Permutação: mudança na acurácia de teste (base {{ pct(e.permutation.base) }}) ao embaralhar cada coluna,
+              {{ e.permutation.repeats }} rodadas, ± 1 desvio. Negativo = embaralhar até melhora: a variável só atrapalha.
+            </span>
+          </figcaption>
+          <ul class="mt-5 space-y-1.5">
+            @for (i of perm; track i.label) {
+              <li class="tip grid grid-cols-[96px_1fr_56px] items-center gap-2 text-[12.5px]" [attr.title]="i.label + ': ' + sgn(i.mean, 3) + ' ± ' + dec(i.std, 3)">
+                <span class="truncate text-ink-2">{{ i.label }}</span>
+                <span class="relative grid h-5 grid-cols-2">
+                  <span class="relative border-r border-line-2">
+                    @if (i.mean < 0) { <span class="bar bar-neg absolute inset-y-[3px] right-0 w-full bg-ink-2/50" [style.transform]="'scaleX(' + i.scale + ')'"></span> }
+                  </span>
+                  <span class="relative">
+                    @if (i.mean > 0) { <span class="bar absolute inset-y-[3px] left-0 w-full bg-accent" [style.transform]="'scaleX(' + i.scale + ')'"></span> }
+                  </span>
+                  <span class="absolute top-1/2 h-px bg-ink" [style.left]="'calc(50% + ' + ((i.mean >= 0 ? 1 : -1) * i.scale - i.err) * 50 + '%)'" [style.width.%]="i.err * 100"></span>
+                </span>
+                <span class="num mono text-right text-[11.5px]">{{ sgn(i.mean * 100, 1) }} pp</span>
+              </li>
+            }
+          </ul>
+          <p class="mt-6 text-[13px] font-medium">|coeficiente| × desvio padrão (média nas 4 classes)</p>
+          <ul class="mt-2 space-y-1.5">
+            @for (i of stdCoef; track i.label) {
+              <li class="tip grid grid-cols-[96px_1fr_56px] items-center gap-2 text-[12.5px]" [attr.title]="i.label + ': ' + dec(i.value, 3)">
+                <span class="truncate text-ink-2">{{ i.label }}</span>
+                <span class="relative h-3.5"><span class="bar absolute inset-y-0 left-0 w-full bg-ink-2/70" [style.transform]="'scaleX(' + i.scale + ')'"></span></span>
+                <span class="num mono text-right text-[11.5px]">{{ dec(i.value) }}</span>
+              </li>
+            }
+          </ul>
+          <p class="mt-3 text-[12.5px] leading-relaxed text-dim">O peso de idade e renda parece grande só porque o modelo ajustou ruído; a permutação mostra que nenhuma variável ajuda no teste.</p>
+        </figure>
+      </div>
+
+      <!-- Sortable / filterable table -->
+      <div class="card mt-6 p-5 sm:p-6" data-reveal>
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h3 class="text-[15px] font-medium">Os {{ e.table.rows.length }} eleitores fictícios</h3>
+            <p class="text-[13px] text-ink-2">Clique no cabeçalho para ordenar. Códigos como no dataset original.</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <label class="sr-only" for="f-voto">Voto</label>
+            <select id="f-voto" class="field !w-auto" (change)="filter(fVote, $any($event.target).value)">
+              <option value="">Voto: todos</option>
+              @for (c of classes; track c) { <option [value]="c">{{ c }}</option> }
+            </select>
+            <label class="sr-only" for="f-reg">Região</label>
+            <select id="f-reg" class="field !w-auto" (change)="filter(fReg, $any($event.target).value)">
+              <option value="">Região: todas</option>
+              @for (r of reg; track r; let i = $index) { <option [value]="i + 1">{{ i + 1 }} · {{ r }}</option> }
+            </select>
+          </div>
+        </div>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full min-w-[560px] text-left text-[12.5px]">
+            <thead class="text-ink-2">
+              <tr class="border-b border-line">
+                @for (c of cols; track c; let i = $index) {
+                  <th class="py-1.5 pr-2 font-normal" [attr.aria-sort]="sortCol() === i ? (sortDir() === 1 ? 'ascending' : 'descending') : null">
+                    <button type="button" class="inline-flex items-center gap-1 hover:text-ink" (click)="sort(i)">
+                      {{ c }}<span class="mono text-[10px]" aria-hidden="true">{{ sortCol() === i ? (sortDir() === 1 ? '▲' : '▼') : '' }}</span>
+                    </button>
+                  </th>
+                }
+              </tr>
+            </thead>
+            <tbody class="num">
+              @for (r of rows(); track r[0]) {
+                <tr class="border-b border-line/60">
+                  <td class="mono py-1.5 pr-2 text-dim">{{ r[0] }}</td>
+                  <td class="pr-2">{{ r[1] }}</td>
+                  <td class="pr-2">{{ dec($any(r[2]), 2) }}</td>
+                  <td class="pr-2">{{ r[3] }} <span class="text-dim">· {{ esc[$any(r[3]) - 1] }}</span></td>
+                  <td class="pr-2">{{ r[4] }} <span class="text-dim">· {{ reg[$any(r[4]) - 1] }}</span></td>
+                  <td class="pr-2">{{ r[5] }} <span class="text-dim">· {{ gen[$any(r[5])] }}</span></td>
+                  <td><span class="inline-flex items-center gap-1.5"><span class="h-2 w-2 rounded-sm" [style.background]="color[classes.indexOf($any(r[6]))]"></span>{{ r[6] }}</span></td>
+                </tr>
+              } @empty {
+                <tr><td [attr.colspan]="cols.length" class="py-6 text-center text-ink-2">Nenhum eleitor com esses filtros.</td></tr>
+              }
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-3 flex items-center justify-between gap-3 text-[13px] text-ink-2">
+          <span class="num">{{ total() }} linhas · página {{ Math.min(page(), pages() - 1) + 1 }} de {{ pages() }}</span>
+          <span class="flex gap-2">
+            <button type="button" class="btn btn-line !min-h-9" [disabled]="page() === 0" (click)="page.set(page() - 1)">Anterior</button>
+            <button type="button" class="btn btn-line !min-h-9" [disabled]="page() >= pages() - 1" (click)="page.set(page() + 1)">Próxima</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    }
+  </section>
+
+  <!-- ============ MODELO ============ -->
+  <section id="modelo" class="scroll-mt-28 border-t border-line py-16" aria-labelledby="mod-title">
+    @defer (hydrate on viewport) {
+    <div class="wrap">
+      <p class="eyebrow">Modelo · avaliação</p>
+      <h2 id="mod-title" class="h2 mt-3 text-[32px] sm:text-[40px]">{{ pct(m.metrics.test.accuracy) }} de acerto, abaixo do acaso</h2>
+      <p class="mt-3 max-w-3xl text-ink-2">
+        Split 70/30 com <code class="mono text-[13px]">random_state=42</code>: {{ m.metrics.train.n }} eleitores de treino e
+        {{ m.metrics.test.n }} de teste. Com 30 pessoas no teste, cada acerto vale 3,3 pontos percentuais: o número oscila muito
+        de um sorteio para outro, como mostra o histograma do topo.
+      </p>
+
+      <dl class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+        @for (k of [
+          { l: 'Acurácia (teste)', v: pct(m.metrics.test.accuracy), hi: true },
+          { l: 'Acaso (1 em 4)', v: pct(0.25), hi: false },
+          { l: 'Baseline: classe mais comum', v: pct(m.metrics.test.majorityBaseline), hi: false },
+          { l: 'Acurácia (treino)', v: pct(m.metrics.train.accuracy), hi: false },
+          { l: 'F1 macro (teste)', v: dec(m.metrics.test.macroF1), hi: false },
+          { l: 'AUC macro OvR (teste)', v: dec(m.viz.macroAuc), hi: false }
+        ]; track k.l) {
+          <div class="panel px-4 py-3"><dt class="text-[12px] text-ink-2">{{ k.l }}</dt><dd class="num mt-1 text-[24px] font-light tracking-[-0.02em]" [class.text-accent]="k.hi">{{ k.v }}</dd></div>
+        }
+      </dl>
+
+      <div class="mt-6 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
+        <div class="card p-5 sm:p-6" data-reveal>
+          <p class="text-[15px] font-medium">Por candidato, no teste</p>
+          <div class="overflow-x-auto">
+            <table class="num mt-4 w-full min-w-[340px] text-left text-[14px]">
+              <thead class="text-[12px] text-ink-2"><tr class="border-b border-line"><th class="py-2 font-normal">Classe</th><th class="font-normal">Precisão</th><th class="font-normal">Recall</th><th class="font-normal">F1</th><th class="font-normal">n</th></tr></thead>
+              <tbody>
+                @for (c of perClass; track c.label; let k = $index) {
+                  <tr class="border-b border-line/60 last:border-0">
+                    <td class="py-2.5"><span class="inline-flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-sm" [style.background]="color[k]"></span>{{ c.label }}</span></td>
+                    <td>{{ pct(c.precision, 0) }}</td><td>{{ pct(c.recall, 0) }}</td><td>{{ dec(c['f1-score']) }}</td><td>{{ c.support }}</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+          <p class="mt-4 text-[13px] leading-relaxed text-ink-2">Nenhum dos 9 eleitores de Bolos no teste foi reconhecido. Não é viés do modelo: é ausência de sinal.</p>
+        </div>
+
+        <div class="card p-5 sm:p-6" data-reveal>
+          <p class="text-[15px] font-medium">Matriz de confusão (teste)</p>
+          <p class="mt-1 text-[13px] text-ink-2">Linhas: voto sorteado. Colunas: previsão. Cor = fração da linha; a diagonal são os acertos.</p>
+          <div class="mt-4 overflow-x-auto">
+            <div class="grid min-w-[360px] grid-cols-[72px_repeat(4,1fr)] gap-[2px] text-[12px]">
+              <span></span>
+              @for (c of classes; track c) { <span class="pb-1 text-center text-dim">prev. {{ c }}</span> }
+              @for (r of confusion; track r.label) {
+                <span class="flex items-center text-dim">{{ r.label }}</span>
+                @for (c of r.cells; track $index; let j = $index) {
+                  <span class="tip num flex h-14 flex-col items-center justify-center rounded-[4px]"
+                        [style.background]="'color-mix(in oklab, var(--accent) ' + Math.round(c.share * 80) + '%, var(--well))'"
+                        [style.color]="c.share > 0.45 ? 'var(--accent-ink)' : null"
+                        [style.outline]="r.label === c.pred ? '1.5px solid var(--ink)' : null" style="outline-offset: -1.5px"
+                        [attr.title]="'Voto ' + r.label + ', previsto ' + c.pred + ': ' + c.v + ' de ' + r.total">
+                    <span class="text-[16px] font-medium">{{ c.v }}</span>
+                    <span class="text-[10.5px] opacity-80">{{ pct(c.share, 0) }}</span>
+                  </span>
+                }
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 grid gap-6 lg:grid-cols-2">
+        <figure class="card p-5 sm:p-6" data-reveal>
+          <figcaption>
+            <span class="block text-[15px] font-medium">Curvas ROC, um contra todos</span>
+            <span class="block text-[13px] text-ink-2">30 eleitores de teste: degraus grandes. Curvas abaixo da diagonal são piores que o acaso.</span>
+          </figcaption>
+          <div class="mt-3 flex flex-wrap gap-4 text-[12px] text-ink-2">
+            @for (r of m.viz.roc; track r.class; let k = $index) { <span class="flex items-center gap-1.5"><span class="h-0.5 w-4" [style.background]="color[k]"></span>{{ r.class }} · AUC {{ dec(r.auc) }}</span> }
+            <span class="flex items-center gap-1.5"><span class="h-px w-4 bg-line-2"></span>Acaso</span>
+          </div>
+          <div class="mt-4 grid grid-cols-[28px_1fr] gap-2">
+            <span class="mono flex max-w-[360px] flex-col justify-between pb-5 text-right text-[10.5px] text-dim" aria-hidden="true"><span>1</span><span>0,5</span><span>0</span></span>
+            <div>
+              <svg viewBox="-4 -4 308 308" class="aspect-square w-full max-w-[360px]" role="img" aria-label="Curvas ROC um contra todos para os quatro candidatos fictícios">
+                @for (g of [0.25, 0.5, 0.75]; track g) {
+                  <line x1="0" x2="300" [attr.y1]="300 - sq(g)" [attr.y2]="300 - sq(g)" stroke="var(--line)" stroke-width="1" />
+                  <line y1="0" y2="300" [attr.x1]="sq(g)" [attr.x2]="sq(g)" stroke="var(--line)" stroke-width="1" />
+                }
+                <rect x="0" y="0" width="300" height="300" fill="none" stroke="var(--line-2)" stroke-width="1" />
+                <line x1="0" y1="300" x2="300" y2="0" stroke="var(--line-2)" stroke-width="1" />
+                @for (r of m.viz.roc; track r.class; let k = $index) {
+                  <path [attr.d]="rocPath(r.points)" fill="none" [attr.stroke]="color[k]" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><title>{{ r.class }}: AUC {{ dec(r.auc) }}</title></path>
+                }
+              </svg>
+              <div class="mono flex max-w-[360px] justify-between text-[10.5px] text-dim" aria-hidden="true"><span>0</span><span>falsos positivos</span><span>1</span></div>
+            </div>
+          </div>
+        </figure>
+
+        <figure class="card p-5 sm:p-6" data-reveal>
+          <figcaption>
+            <span class="block text-[15px] font-medium">Confiança contra acerto (teste)</span>
+            <span class="block text-[13px] text-ink-2">Probabilidade do candidato previsto, por faixa, contra a fração de acertos. A diagonal seria um modelo honesto sobre a própria certeza.</span>
+          </figcaption>
+          <div class="mt-3 flex flex-wrap gap-4 text-[12px] text-ink-2">
+            <span class="flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-accent"></span>Faixa (tamanho = eleitores)</span>
+            <span class="flex items-center gap-1.5"><span class="h-px w-4 bg-line-2"></span>Calibração perfeita</span>
+          </div>
+          <div class="mt-4 grid grid-cols-[28px_1fr] gap-2">
+            <span class="mono flex flex-col justify-between pb-5 text-right text-[10.5px] text-dim" aria-hidden="true"><span>1</span><span>0,5</span><span>0</span></span>
+            <div>
+              <svg viewBox="-8 -8 316 316" class="aspect-square w-full max-w-[360px]" role="img" aria-label="Confiança média contra acerto: o modelo diz 54% de certeza e acerta 15%">
+                @for (g of [0.25, 0.5, 0.75]; track g) {
+                  <line x1="0" x2="300" [attr.y1]="300 - sq(g)" [attr.y2]="300 - sq(g)" stroke="var(--line)" stroke-width="1" />
+                  <line y1="0" y2="300" [attr.x1]="sq(g)" [attr.x2]="sq(g)" stroke="var(--line)" stroke-width="1" />
+                }
+                <rect x="0" y="0" width="300" height="300" fill="none" stroke="var(--line-2)" stroke-width="1" />
+                <line x1="0" y1="300" x2="300" y2="0" stroke="var(--line-2)" stroke-width="1" />
+                @for (b of m.viz.reliability; track b.from) {
+                  <circle [attr.cx]="sq(b.conf)" [attr.cy]="300 - sq(b.acc)" [attr.r]="4 + Math.sqrt(b.n) * 2" fill="var(--accent)" fill-opacity="0.85" stroke="var(--panel)" stroke-width="2"><title>Confiança média {{ pct(b.conf) }}, acertou {{ pct(b.acc) }} de {{ b.n }} eleitores</title></circle>
+                }
+              </svg>
+              <div class="mono flex max-w-[360px] justify-between text-[10.5px] text-dim" aria-hidden="true"><span>0</span><span>confiança prevista</span><span>1</span></div>
+            </div>
+          </div>
+          <p class="mt-2 text-[13px] text-ink-2">Excesso de confiança: o modelo costuma dar mais de 45% ao favorito e acerta bem menos que isso.</p>
+        </figure>
+      </div>
+
+      <!-- Coefficients heatmap -->
+      <figure class="card mt-6 p-5 sm:p-6" data-reveal>
+        <figcaption>
+          <span class="block text-[15px] font-medium">Coeficientes por candidato</span>
+          <span class="block text-[13px] text-ink-2">
+            Cada célula soma ao logit do candidato por unidade da variável (1 ano, R$ 1 mil, 1 código). Verde aumenta, magenta
+            reduz. As unidades são diferentes: comparar colunas exige o gráfico de importância.
+          </span>
+        </figcaption>
+        <div class="mt-5 overflow-x-auto">
+          <table class="num w-full min-w-[560px] border-separate border-spacing-[2px] text-[12.5px]">
+            <thead><tr><th class="w-24"></th>@for (f of m.features; track f) { <th class="pb-1 text-center font-normal text-ink-2">{{ f }}</th> }<th class="pb-1 text-center font-normal text-ink-2">Intercepto</th></tr></thead>
+            <tbody>
+              @for (row of m.coef; track $index; let k = $index) {
+                <tr>
+                  <th class="pr-2 text-left font-normal"><span class="inline-flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-sm" [style.background]="color[k]"></span>{{ classes[k] }}</span></th>
+                  @for (v of row; track $index; let j = $index) {
+                    <td class="tip h-11 rounded-[4px] text-center" [style.background]="div(v, coefMax)" [attr.title]="classes[k] + ' × ' + m.features[j] + ': ' + sgn(v, 4)">{{ sgn(v, 3) }}</td>
+                  }
+                  <td class="h-11 rounded-[4px] bg-well text-center text-ink-2">{{ sgn(m.intercept[k]) }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </figure>
+
+      <!-- Decision facets -->
+      <figure class="card mt-6 p-5 sm:p-6" data-reveal>
+        <figcaption>
+          <span class="block text-[15px] font-medium">Mapa de probabilidade por candidato: idade × renda</span>
+          <span class="block max-w-3xl text-[13px] leading-relaxed text-ink-2">
+            Um painel por candidato (cor mais forte = maior probabilidade). Escolaridade, região e gênero ficam nos valores do
+            simulador ({{ esc[x()['Escolaridade'] - 1] }}, {{ reg[x()['Região'] - 1] }}, {{ gen[x()['Gênero']] }}) e o mapa muda junto.
+            Pontos = eleitores que votaram naquele candidato; o losango é o eleitor do simulador.
+          </span>
+        </figcaption>
+        <div class="mt-5 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          @for (f of facets(); track f.k) {
+            <div class="min-w-0">
+              <p class="flex items-baseline justify-between gap-2 text-[13px]">
+                <span class="inline-flex items-center gap-2 font-medium"><span class="h-2.5 w-2.5 rounded-sm" [style.background]="color[f.k]"></span>{{ f.name }}</span>
+                <span class="text-[12px] text-ink-2">favorito em {{ pct(f.share, 0) }} do mapa</span>
+              </p>
+              <svg [attr.viewBox]="'0 0 ' + fw + ' ' + fh" class="mt-2 h-auto w-full rounded-[4px] bg-panel" role="img" [attr.aria-label]="'Probabilidade de ' + f.name + ' por idade e renda'">
+                <g [attr.fill]="color[f.k]" shape-rendering="crispEdges">
+                  @for (c of f.cells; track $index) { <rect [attr.x]="c.x" [attr.y]="c.y" [attr.width]="c.w" [attr.height]="c.h" [attr.fill-opacity]="c.o" /> }
+                </g>
+                <g fill="var(--ink)" opacity="0.55">
+                  @for (c of f.cells; track $index) { @if (c.top) { <circle [attr.cx]="c.x + c.w / 2" [attr.cy]="c.y + c.h / 2" r="1.3" /> } }
+                </g>
+                <g fill="var(--panel)" stroke="var(--ink)" stroke-width="1.4">
+                  @for (v of f.voters; track $index) { <circle [attr.cx]="v.x" [attr.cy]="v.y" r="3.2" /> }
+                </g>
+                <rect [attr.x]="here().x - 5" [attr.y]="here().y - 5" width="10" height="10" [attr.transform]="'rotate(45 ' + here().x + ' ' + here().y + ')'" fill="var(--ink)" stroke="var(--panel)" stroke-width="2" />
+              </svg>
+              <div class="mono mt-1 flex justify-between text-[10px] text-dim" aria-hidden="true"><span>18 anos</span><span>idade · y = renda 1 a 10 mil</span><span>69</span></div>
+            </div>
+          }
+        </div>
+        <p class="mt-4 text-[13px] text-ink-2">Pontinhos marcam onde o candidato é o favorito. Note como os eleitores de cada candidato se espalham pelo mapa inteiro, sem respeitar as regiões.</p>
+      </figure>
+
+      <!-- Como funciona -->
+      <div class="mt-14" data-reveal>
+        <h3 class="h2 text-[26px]">Como funciona: do sorteio ao navegador, sem servidor</h3>
+        <ol class="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <li class="panel p-5">
+            <p class="mono text-[12px] text-accent">01 · numpy</p>
+            <h4 class="mt-2 text-[16px] font-medium">Dados inventados</h4>
+            <p class="mt-2 text-[14px] leading-relaxed text-ink-2">Seis sorteios independentes por eleitor, exatamente como o <code class="mono text-[12px]">main.py</code>. A única mudança: <code class="mono text-[12px]">np.random.seed({{ m.seed }})</code> para o resultado ser reproduzível.</p>
+          </li>
+          <li class="panel p-5">
+            <p class="mono text-[12px] text-accent">02 · scikit-learn {{ m.params.sklearn }}</p>
+            <h4 class="mt-2 text-[16px] font-medium">Treino</h4>
+            <p class="mt-2 text-[14px] leading-relaxed text-ink-2"><code class="mono text-[12px] [overflow-wrap:anywhere]">LogisticRegression(multi_class='multinomial', solver='lbfgs', max_iter=1000)</code>, convergiu em {{ m.params.nIter }} iterações. Variáveis sem padronização, como no original.</p>
+          </li>
+          <li class="panel p-5">
+            <p class="mono text-[12px] text-accent">03 · export_model.py</p>
+            <h4 class="mt-2 text-[16px] font-medium">Exportação</h4>
+            <p class="mt-2 text-[14px] leading-relaxed text-ink-2">Grava coeficientes, interceptos, métricas, curvas, a análise exploratória, o estudo de 500 sementes e 20 eleitores com o <code class="mono text-[12px]">predict_proba</code> do sklearn.</p>
+          </li>
+          <li class="panel p-5">
+            <p class="mono text-[12px] text-accent">04 · TypeScript</p>
+            <h4 class="mt-2 text-[16px] font-medium">Inferência no navegador</h4>
+            <p class="mt-2 text-[14px] leading-relaxed text-ink-2">Quatro logits (intercepto + coeficientes × valores) e softmax. O build falha se alguma das 20 probabilidades diferir do sklearn em mais de 0,000001.</p>
+          </li>
+        </ol>
+        <p class="mt-4 max-w-4xl text-[13px] leading-relaxed text-dim">
+          Correção em relação ao original: <code class="mono text-[12px]">astype('category').cat.codes</code> numera os candidatos em
+          ordem alfabética (Bolos=0, Dantena=1, Marcos=2, Monarki=3), mas o <code class="mono text-[12px]">main.py</code> e o README
+          rotulavam as linhas de coeficientes como Monarki, Bolos, Dantena, Marcos. Aqui os rótulos seguem
+          <code class="mono text-[12px]">modelo.classes_</code>.
+        </p>
+      </div>
+
+      <!-- Limitações -->
+      <div id="limitacoes" class="mt-14 scroll-mt-28" data-reveal>
+        <h3 class="h2 text-[26px]">Limitações: o que este modelo não é</h3>
+        <ul class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <li class="panel p-5 text-[14px] leading-relaxed text-ink-2"><strong class="block text-[15px] font-medium text-ink">Não é previsão eleitoral</strong>Os dados são sorteados e os candidatos, inventados. Nenhuma saída diz algo sobre eleitores ou candidatos reais.</li>
+          <li class="panel p-5 text-[14px] leading-relaxed text-ink-2"><strong class="block text-[15px] font-medium text-ink">Não há sinal para aprender</strong>O voto foi sorteado sem olhar as outras colunas. O teto teórico é 25% de acerto; o resto é sorte da amostra.</li>
+          <li class="panel p-5 text-[14px] leading-relaxed text-ink-2"><strong class="block text-[15px] font-medium text-ink">Amostra minúscula</strong>70 eleitores para treinar 24 parâmetros e 30 para testar: qualquer métrica tem barra de erro enorme.</li>
+          <li class="panel p-5 text-[14px] leading-relaxed text-ink-2"><strong class="block text-[15px] font-medium text-ink">Códigos tratados como números</strong>Região 1 a 5 entra como escala contínua (Centro "vale" 5 × Norte). O certo seria one-hot.</li>
+          <li class="panel p-5 text-[14px] leading-relaxed text-ink-2"><strong class="block text-[15px] font-medium text-ink">Sem padronização</strong>Idade varia de 18 a 69 e gênero de 0 a 1; os coeficientes não são comparáveis entre si sem escalar.</li>
+          <li class="panel p-5 text-[14px] leading-relaxed text-ink-2"><strong class="block text-[15px] font-medium text-ink">Probabilidades confiantes demais</strong>O favorito costuma receber mais de 45% de probabilidade, e acerta bem menos. Não use os percentuais como certeza.</li>
+        </ul>
+      </div>
+    </div>
+    }
+  </section>
+
+  <!-- ============ SIMULADOR ============ -->
+  <section id="simulador" class="scroll-mt-28 border-y border-line bg-well/60 py-16" aria-labelledby="sim-title">
+    <div class="wrap">
+      <p class="eyebrow">Simulador · dados fictícios</p>
+      <h2 id="sim-title" class="h2 mt-3 text-[32px] sm:text-[40px]">Descreva um eleitor inventado</h2>
+      <p class="mt-3 max-w-3xl text-ink-2">
+        Mova os controles e veja as quatro probabilidades mudarem. Lembre: o modelo foi treinado com sorteios, então isto
+        mostra a mecânica da regressão multinomial, não a intenção de voto de ninguém.
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-2" role="group" aria-label="Exemplos prontos">
+        <button type="button" class="btn btn-line" [attr.aria-pressed]="preset() === 'medio'" (click)="load('medio')">Eleitor médio</button>
+        <button type="button" class="btn btn-line" [attr.aria-pressed]="preset() === 'jovem'" (click)="load('jovem')">Jovem, renda baixa</button>
+        <button type="button" class="btn btn-line" [attr.aria-pressed]="preset() === 'pos'" (click)="load('pos')">Pós-graduada no Centro</button>
+        <button type="button" class="btn btn-line" [attr.aria-pressed]="preset() === 'linha0'" (click)="load('linha0')">Eleitor nº 0 do dataset</button>
+      </div>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+        <div class="card space-y-6 p-5 sm:p-6">
+          <div>
+            <div class="flex items-baseline justify-between"><label for="idade" class="text-[14px] font-medium">Idade</label><output for="idade" class="num mono text-accent">{{ x()['Idade'] }} anos</output></div>
+            <input id="idade" type="range" class="range mt-2" min="18" max="69" step="1" [value]="x()['Idade']" (input)="set('Idade', $any($event.target).value)">
+            <div class="mono flex justify-between text-[11px] text-dim"><span>18</span><span>69</span></div>
+          </div>
+          <div>
+            <div class="flex items-baseline justify-between"><label for="renda" class="text-[14px] font-medium">Renda mensal</label><output for="renda" class="num mono text-accent">R$ {{ dec(x()['Renda'], 1) }} mil</output></div>
+            <input id="renda" type="range" class="range mt-2" min="1" max="10" step="0.1" [value]="x()['Renda']" (input)="set('Renda', $any($event.target).value)">
+            <div class="mono flex justify-between text-[11px] text-dim"><span>R$ 1 mil</span><span>R$ 10 mil</span></div>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="escolaridade" class="text-[14px] font-medium">Escolaridade</label>
+              <select id="escolaridade" class="field mt-2" (change)="set('Escolaridade', $any($event.target).value)">
+                @for (o of esc; track o; let i = $index) { <option [value]="i + 1" [selected]="x()['Escolaridade'] === i + 1" [attr.selected]="x()['Escolaridade'] === i + 1 ? '' : null">{{ i + 1 }} · {{ o }}</option> }
+              </select>
+            </div>
+            <div>
+              <label for="regiao" class="text-[14px] font-medium">Região</label>
+              <select id="regiao" class="field mt-2" (change)="set('Região', $any($event.target).value)">
+                @for (o of reg; track o; let i = $index) { <option [value]="i + 1" [selected]="x()['Região'] === i + 1" [attr.selected]="x()['Região'] === i + 1 ? '' : null">{{ i + 1 }} · {{ o }}</option> }
+              </select>
+            </div>
+          </div>
+          <fieldset>
+            <legend class="text-[14px] font-medium">Gênero</legend>
+            <div class="mt-2 grid grid-cols-2 gap-2">
+              @for (o of gen; track o; let i = $index) {
+                <label class="opt">
+                  <input type="radio" name="genero" [value]="i" [checked]="x()['Gênero'] === i" [attr.checked]="x()['Gênero'] === i ? '' : null" (change)="set('Gênero', i)">
+                  <span class="text-[14px]">{{ i }} · {{ o }}</span>
+                </label>
+              }
+            </div>
+          </fieldset>
+          @if (preset() === 'linha0') {
+            <p class="rounded-lg border border-line bg-well px-3 py-2 text-[13px] text-ink-2">Voto sorteado para este eleitor no dataset: <strong class="text-ink">{{ e.table.rows[0][6] }}</strong>.</p>
+          }
+        </div>
+
+        <div class="card p-5 sm:p-6 lg:sticky lg:top-20">
+          <p class="eyebrow">Probabilidade por candidato fictício</p>
+          <ul class="mt-5 space-y-3" aria-live="polite" aria-atomic="true">
+            @for (c of classes; track c; let k = $index) {
+              <li class="grid grid-cols-[84px_1fr_58px] items-center gap-3 text-[14px]">
+                <span class="flex items-center gap-2" [class.font-semibold]="k === top()"><span class="h-2.5 w-2.5 rounded-sm" [style.background]="color[k]"></span>{{ c }}</span>
+                <span class="relative h-4 rounded-r-[4px] bg-well"><span class="bar bar-anim absolute inset-y-0 left-0 w-full !h-4" [style.background]="color[k]" [style.transform]="'scaleX(' + probs()[k] + ')'"></span></span>
+                <span class="num text-right" [attr.data-testid]="k === top() ? 'p1' : null">{{ pct(probs()[k]) }}</span>
+              </li>
+            }
+          </ul>
+          <p class="mt-4 text-[15px]">Favorito do modelo: <strong>{{ classes[top()] }}</strong><span class="text-[13px] text-ink-2"> (com dados que não carregam sinal nenhum)</span></p>
+
+          <div class="mt-6 border-t border-line pt-5">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h3 class="text-[15px] font-medium">Logit de {{ classes[shown()] }}: coeficiente × valor</h3>
+              <div class="flex gap-1" role="group" aria-label="Candidato explicado">
+                @for (c of classes; track c; let k = $index) {
+                  <button type="button" class="btn btn-line !min-h-8 !px-2.5 !text-[12px]" [attr.aria-pressed]="shown() === k" (click)="focus.set(k)">{{ c }}</button>
+                }
+              </div>
+            </div>
+            <ul class="mt-4 space-y-1">
+              @for (t of terms().rows; track t.label) {
+                <li class="tip grid grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_52px] items-center gap-2 rounded-md py-0.5 text-[12.5px]" [attr.title]="t.label + ': ' + sgn(t.coef, 4) + ' × ' + t.x + ' = ' + sgn(t.value, 3)">
+                  <span class="truncate text-right">{{ t.label }} <span class="text-dim">· {{ codeLabel(t.label, t.x) }}</span></span>
+                  <span class="grid h-5 grid-cols-2">
+                    <span class="relative border-r border-line-2">@if (t.value < 0) {<span class="bar bar-neg bar-anim absolute inset-y-[3px] right-0 w-full bg-neg" [style.transform]="'scaleX(' + t.scale + ')'"></span>}</span>
+                    <span class="relative">@if (t.value > 0) {<span class="bar bar-anim absolute inset-y-[3px] left-0 w-full bg-pos" [style.transform]="'scaleX(' + t.scale + ')'"></span>}</span>
+                  </span>
+                  <span class="num mono text-right text-[11.5px]">{{ sgn(t.value) }}</span>
+                </li>
+              }
+            </ul>
+            <p class="num mono mt-4 rounded-lg border border-line bg-well px-3 py-2.5 text-[12px] leading-relaxed text-ink-2">
+              logits: @for (c of classes; track c; let k = $index) { {{ c }} {{ sgn(z()[k]) }}{{ k < 3 ? ' · ' : '' }} }<br>
+              p = e<sup>logit</sup> / soma das 4 exponenciais (softmax). Intercepto de {{ classes[shown()] }}: {{ sgn(terms().intercept) }}.
+            </p>
+            <p class="mt-3 text-[13px] leading-relaxed text-ink-2">
+              No softmax só a diferença entre os logits importa: um termo grande só muda o resultado se for maior para um
+              candidato do que para os outros.
+            </p>
+          </div>
+          <a href="#modelo" class="mt-4 inline-block text-[13px] text-accent underline underline-offset-2">Ver este eleitor no mapa de probabilidade</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DADOS ============ -->
+  <section id="dados" class="wrap scroll-mt-28 py-16" aria-labelledby="dados-title">
+    <p class="eyebrow">Dados · downloads</p>
+    <h2 id="dados-title" class="h2 mt-3 text-[32px] sm:text-[40px]">Leve os dados fictícios e o modelo</h2>
+    <p class="mt-3 max-w-3xl text-ink-2">
+      Tudo aqui é inventado e está marcado como fictício no nome do arquivo. O CSV traz os mesmos 100 eleitores do dashboard
+      (semente {{ e.kpis.seed }}); o JSON é exatamente o que o simulador carrega.
+    </p>
+    <ul class="mt-8 grid gap-4 md:grid-cols-3">
+      @for (d of e.downloads; track d.file) {
+        <li class="card flex flex-col p-5">
+          <p class="mono break-all text-[12px] text-accent">{{ d.file }}</p>
+          <h3 class="mt-2 text-[16px] font-medium">{{ d.label }}</h3>
+          <p class="mt-2 flex-1 text-[14px] leading-relaxed text-ink-2">{{ d.description }}</p>
+          <div class="mt-4 flex items-center justify-between gap-3">
+            <span class="num mono text-[12px] text-dim">{{ kb(d.bytes) }}</span>
+            <a [href]="'data/' + d.file" [attr.download]="d.file" class="btn btn-primary !min-h-10">Baixar</a>
+          </div>
+        </li>
+      }
+    </ul>
+
+    <div class="card mt-8 overflow-x-auto p-5 sm:p-6">
+      <h3 class="text-[15px] font-medium">Dicionário de dados (fictício)</h3>
+      <table class="mt-4 w-full min-w-[600px] text-left text-[13px]">
+        <thead class="text-[12px] text-ink-2"><tr class="border-b border-line"><th class="py-2 font-normal">Coluna</th><th class="font-normal">Tipo</th><th class="font-normal">Como foi gerada</th><th class="font-normal">Valores</th></tr></thead>
+        <tbody>
+          <tr class="border-b border-line/60"><td class="mono py-2">Idade</td><td>inteiro</td><td class="text-ink-2">np.random.randint(18, 70)</td><td>18 a 69</td></tr>
+          <tr class="border-b border-line/60"><td class="mono py-2">Renda</td><td>decimal</td><td class="text-ink-2">np.random.uniform(1, 10), em mil R$</td><td>1 a 10</td></tr>
+          <tr class="border-b border-line/60"><td class="mono py-2">Escolaridade</td><td>código</td><td class="text-ink-2">sorteio entre 4 códigos</td><td>1 Fundamental · 2 Médio · 3 Superior · 4 Pós</td></tr>
+          <tr class="border-b border-line/60"><td class="mono py-2">Região</td><td>código</td><td class="text-ink-2">sorteio entre 5 códigos</td><td>1 Norte · 2 Sul · 3 Leste · 4 Oeste · 5 Centro</td></tr>
+          <tr class="border-b border-line/60"><td class="mono py-2">Gênero</td><td>código</td><td class="text-ink-2">sorteio entre 0 e 1</td><td>0 Masculino · 1 Feminino</td></tr>
+          <tr><td class="mono py-2">Voto</td><td>texto</td><td class="text-ink-2">sorteio entre 4 nomes, independente das outras colunas</td><td>Bolos · Dantena · Marcos · Monarki</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="border-t border-line bg-well/80">
+  <div class="wrap grid gap-8 py-12 md:grid-cols-[1.4fr_1fr]">
+    <div>
+      <span class="inline-flex items-center gap-2.5">
+        <img src="favicon.svg" width="24" height="24" alt="">
+        <span class="text-[15px] font-semibold tracking-[-0.03em]">Eleições SP <span class="font-light text-ink-2">2024</span></span>
+      </span>
+      <p class="mt-3 max-w-md text-[13px] leading-relaxed text-ink-2">
+        Modelo educacional treinado com dados fictícios; não é previsão eleitoral. Candidatos e eleitores são inventados.
+        Projeto de portfólio, sem fins comerciais nem relação com campanhas, partidos ou institutos de pesquisa.
+      </p>
+    </div>
+    <ul class="space-y-2.5 text-[14px] text-ink-2">
+      <li><a [href]="links.portfolio" class="hover:text-ink">Desenvolvido por {{ links.author }}</a></li>
+      <li><a [href]="links.project" class="hover:text-ink">Este projeto no portfólio</a></li>
+      <li><a [href]="links.repo" class="hover:text-ink">Código no GitHub</a></li>
+    </ul>
+  </div>
+  <div class="border-t border-line">
+    <p class="wrap py-5 text-[12px] text-dim">© {{ year }} {{ links.author }} · Resultado real citado: Tribunal Superior Eleitoral.</p>
+  </div>
+</footer>

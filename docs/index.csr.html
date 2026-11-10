@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR" data-beasties-container="">
+<head>
+  <meta charset="utf-8">
+  <title>Eleições SP 2024 (fictício) | Regressão logística multinomial com dados inventados</title>
+  <base href="/EleicoesSP-2024-IA/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Modelo educacional de regressão logística multinomial treinado com 100 eleitores fictícios e 4 candidatos inventados. Dashboard, avaliação honesta e simulador no navegador. Não é previsão eleitoral. Projeto de portfólio de Gustavo Martins Gripaldi.">
+  <meta name="author" content="Gustavo Martins Gripaldi">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f3f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12110e" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://g2martins.github.io/EleicoesSP-2024-IA/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Eleições SP 2024 (fictício)">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Eleições SP 2024 (fictício) | Regressão logística multinomial com dados inventados">
+  <meta property="og:description" content="Modelo educacional treinado com dados fictícios; não é previsão eleitoral. Veja o que um classificador aprende quando os dados são sorteados.">
+  <meta property="og:url" content="https://g2martins.github.io/EleicoesSP-2024-IA/">
+  <meta property="og:image" content="https://g2martins.github.io/EleicoesSP-2024-IA/og/eleicoes.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Eleições SP 2024, modelo educacional com dados fictícios">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Eleições SP 2024 (fictício) | Regressão logística multinomial com dados inventados">
+  <meta name="twitter:description" content="Modelo educacional treinado com dados fictícios; não é previsão eleitoral.">
+  <meta name="twitter:image" content="https://g2martins.github.io/EleicoesSP-2024-IA/og/eleicoes.png">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <script id="ld-json" type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://g2martins.github.io/EleicoesSP-2024-IA/#website",
+        "url": "https://g2martins.github.io/EleicoesSP-2024-IA/",
+        "name": "Eleições SP 2024 (fictício)",
+        "inLanguage": "pt-BR",
+        "description": "Demonstração educacional de regressão logística multinomial treinada com dados fictícios. Não é previsão eleitoral. Projeto de portfólio.",
+        "creator": { "@id": "https://g2portfolio.grovicdata.com/#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://g2portfolio.grovicdata.com/#person",
+        "name": "Gustavo Martins Gripaldi",
+        "url": "https://g2portfolio.grovicdata.com/",
+        "jobTitle": "Engenheiro de dados",
+        "sameAs": ["https://github.com/G2Martins"]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "EleicoesSP-2024-IA",
+        "description": "Regressão logística multinomial (scikit-learn) treinada com 100 eleitores gerados aleatoriamente, exportada para inferência em TypeScript no navegador. Dados fictícios, uso educacional.",
+        "codeRepository": "https://github.com/G2Martins/EleicoesSP-2024-IA",
+        "programmingLanguage": ["Python", "TypeScript"],
+        "runtimePlatform": "scikit-learn, Angular",
+        "inLanguage": "pt-BR",
+        "author": { "@id": "https://g2portfolio.grovicdata.com/#person" }
+      }
+    ]
+  }
+  </script>
+  <!-- Reveal bootstrap before first paint. Content shows anyway if JS never boots. -->
+  <script>
+    (function () {
+      var c = document.documentElement.classList;
+      c.add('js');
+      setTimeout(function () { if (!c.contains('reveal-ready')) c.add('reveal-all'); }, 3000);
+    })();
+  </script>
+<style>@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url("./media/geist-cyrillic-ext-wght-normal-RO72NYA2.woff2") format("woff2-variations");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url("./media/geist-cyrillic-wght-normal-CK2XY27K.woff2") format("woff2-variations");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url("./media/geist-vietnamese-wght-normal-Y2R7JZKV.woff2") format("woff2-variations");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url("./media/geist-latin-ext-wght-normal-XEQ56JUF.woff2") format("woff2-variations");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url("./media/geist-latin-wght-normal-T72VVCUW.woff2") format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Geist Mono Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url("./media/geist-mono-cyrillic-ext-wght-normal-QXKVIKFD.woff2") format("woff2-variations");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:Geist Mono Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url("./media/geist-mono-cyrillic-wght-normal-GOIAQAGU.woff2") format("woff2-variations");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:Geist Mono Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url("./media/geist-mono-symbols2-wght-normal-WZJJVLQO.woff2") format("woff2-variations");unicode-range:U+2000-2001,U+2004-2008,U+200A,U+23B8-23BD,U+2500-259F}@font-face{font-family:Geist Mono Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url("./media/geist-mono-vietnamese-wght-normal-KW5NM6YV.woff2") format("woff2-variations");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Geist Mono Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url("./media/geist-mono-latin-ext-wght-normal-HU3ZAWN6.woff2") format("woff2-variations");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Geist Mono Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url("./media/geist-mono-latin-wght-normal-CJNQKXUG.woff2") format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@layer properties;@layer theme,base,components,utilities;@layer theme{:root{--font-sans:"Geist Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;--font-mono:"Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--spacing:.25rem;--container-md:28rem;--container-2xl:42rem;--container-3xl:48rem;--container-4xl:56rem;--font-weight-light:300;--font-weight-normal:400;--font-weight-medium:500;--font-weight-semibold:600;--leading-snug:1.375;--leading-relaxed:1.625;--radius-sm:.25rem;--radius-md:.375rem;--radius-lg:.5rem;--default-font-family:"Geist Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;--default-mono-font-family:"Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ease-out-expo:cubic-bezier(.16, 1, .3, 1)}}@layer base{*,:after,:before{box-sizing:border-box;margin:0;padding:0;border:0 solid}html{line-height:1.5;-webkit-text-size-adjust:100%;tab-size:4;font-family:var(--default-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings, normal);font-variation-settings:var(--default-font-variation-settings, normal);-webkit-tap-highlight-color:transparent}}@layer utilities{}:root{--bg:#f3f0e8;--panel:#fbf9f4;--panel-2:#f0ece2;--well:#ece8dd;--line:#ddd6c6;--line-2:#c8bfab;--ink:#17150f;--ink-2:#4d483d;--dim:#6b6557;--accent:#b4261f;--accent-ink:#ffffff;--c1:#2a78d6;--c2:#eb6834;--c3:#1baf7a;--c4:#eda100;--c4-ink:#0b0b0b;--pos:#2f8a3a;--neg:#c0457e;--mid:#ebe7dd;--dot:rgb(60 50 30 / .07);--glow-1:rgb(180 38 31 / .06);--glow-2:rgb(42 120 214 / .06);--bg-2:#efebe1;color-scheme:light}@media(prefers-color-scheme:dark){:root{--bg:#12110e;--panel:#1b1a16;--panel-2:#22201b;--well:#15140f;--line:#2c2a24;--line-2:#3d3a32;--ink:#f1ede4;--ink-2:#bfb8a8;--dim:#958e7f;--accent:#ef6a5f;--accent-ink:#1b1a16;--c1:#3987e5;--c2:#d95926;--c3:#199e70;--c4:#c98500;--c4-ink:#0b0b0b;--pos:#3fa34d;--neg:#d55181;--mid:#2a2823;--dot:rgb(240 230 210 / .05);--glow-1:rgb(239 106 95 / .07);--glow-2:rgb(57 135 229 / .07);--bg-2:#161511;color-scheme:dark}}@layer base{html{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility;background:var(--bg)}@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}body{min-height:100dvh;color:var(--ink);font-family:var(--font-sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip}body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(900px 620px at 105% 4%,var(--glow-1),transparent 64%),radial-gradient(900px 620px at -10% 40%,var(--glow-2),transparent 64%),linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%)}body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(circle,var(--dot) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 70%);mask-image:linear-gradient(180deg,#000 0%,transparent 70%)}}@layer components{}@property --tw-border-spacing-x{syntax:"<length>";inherits:false;initial-value:0;}@property --tw-border-spacing-y{syntax:"<length>";inherits:false;initial-value:0;}@property --tw-translate-x{syntax:"*";inherits:false;initial-value:0;}@property --tw-translate-y{syntax:"*";inherits:false;initial-value:0;}@property --tw-translate-z{syntax:"*";inherits:false;initial-value:0;}@property --tw-rotate-x{syntax:"*";inherits:false;}@property --tw-rotate-y{syntax:"*";inherits:false;}@property --tw-rotate-z{syntax:"*";inherits:false;}@property --tw-skew-x{syntax:"*";inherits:false;}@property --tw-skew-y{syntax:"*";inherits:false;}@property --tw-space-y-reverse{syntax:"*";inherits:false;initial-value:0;}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid;}@property --tw-leading{syntax:"*";inherits:false;}@property --tw-font-weight{syntax:"*";inherits:false;}@property --tw-tracking{syntax:"*";inherits:false;}@property --tw-outline-style{syntax:"*";inherits:false;initial-value:solid;}@layer properties{@supports ((-webkit-hyphens: none) and (not (margin-trim: block))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))){*,:before,:after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-translate-z:0;--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-y-reverse:0;--tw-border-style:solid;--tw-leading:initial;--tw-font-weight:initial;--tw-tracking:initial;--tw-outline-style:solid}}}</style><link rel="stylesheet" href="styles-CFL33N4Q.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-CFL33N4Q.css"></noscript></head>
+<body ngcm="">
+  <app-root></app-root>
+<script src="main-HWPH3SQY.js" type="module"></script></body>
+</html>

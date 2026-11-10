@@ -1,0 +1,8 @@
+﻿coluna,tipo,descricao,valores
+id,inteiro,Número da linha gerada.,0 a 99
+Idade,inteiro,Idade sorteada (np.random.randint). FICTÍCIO.,18 a 69
+Renda,decimal,"Renda mensal em milhares de reais, sorteio uniforme. FICTÍCIO.",1 a 10
+Escolaridade,código,"Sorteado. 1 Fundamental, 2 Médio, 3 Superior, 4 Pós-graduação. FICTÍCIO.",1 a 4
+Região,código,"Sorteado. 1 Norte, 2 Sul, 3 Leste, 4 Oeste, 5 Centro. FICTÍCIO.",1 a 5
+Gênero,código,"Sorteado. 0 Masculino, 1 Feminino. FICTÍCIO.",0 ou 1
+Voto,texto,"Candidato fictício sorteado, independente de todas as outras colunas.","Bolos, Dantena, Marcos, Monarki"

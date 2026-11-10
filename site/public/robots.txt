@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://g2martins.github.io/EleicoesSP-2024-IA/sitemap.xml

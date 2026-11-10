@@ -1,0 +1,15 @@
+{
+  "name": "Eleições SP 2024 (fictício)",
+  "short_name": "Eleições SP",
+  "description": "Modelo educacional treinado com dados fictícios; não é previsão eleitoral. Projeto de portfólio.",
+  "lang": "pt-BR",
+  "start_url": "/EleicoesSP-2024-IA/",
+  "scope": "/EleicoesSP-2024-IA/",
+  "display": "standalone",
+  "background_color": "#f3f0e8",
+  "theme_color": "#f3f0e8",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
